@@ -1,0 +1,40 @@
+<assembly>
+	<id>bin</id>
+
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+
+	<includeBaseDirectory>true</includeBaseDirectory>
+
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+			<useProjectArtifact>true</useProjectArtifact>
+			<scope>runtime</scope>
+		</dependencySet>
+	</dependencySets>
+
+	<fileSets>
+		<fileSet>
+			<outputDirectory>bin</outputDirectory>
+			<directory>${basedir}/src/main/scripts/</directory>
+		</fileSet>
+
+		<fileSet>
+			<outputDirectory>conf</outputDirectory>
+
+			<directory>${basedir}/src/test/resources/spring/</directory>
+			<includes>
+				<include>vesta-rest-netty.properties</include>
+			</includes>
+		</fileSet>
+
+		<fileSet>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>${basedir}/README.MD</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>
