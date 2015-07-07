@@ -10,6 +10,6 @@ mkdir ./target/vesta-id-generator-0.0.1-release/doc
 #generate-md --layout mixu-book --input ./vesta-doc --output ./target/vesta-id-generator-0.0.1-release/doc
 generate-md --layout ./vesta-theme --input ./vesta-doc --output ./target/vesta-id-generator-0.0.1-release/doc
 
-rm -fr releases/vesta-id-generator-0.0.1-release.tar.gz
+rm -fr releases/
 mkdir releases
 tar zcvf releases/vesta-id-generator-0.0.1-release.tar.gz -C target vesta-id-generator-0.0.1-release
