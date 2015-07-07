@@ -4,6 +4,7 @@
 
 ##主页
 >访问Github主页: **[https://github.com/robertleepeak/vesta-id-generator](https://github.com/robertleepeak/vesta-id-generator)**
+>Github代码下载: **[https://github.com/robertleepeak/vesta-id-generator.git](https://github.com/robertleepeak/vesta-id-generator.git)**
 
 ##版本
 
