@@ -18,7 +18,7 @@
 
 - 如果你通过源代码方式安装Vesta的发布包到你的Maven私服，你可以直接从你的Maven私服下载此安装包：
 
->wget http://ip:port/nexus/content/groups/public/com/wanda/vesta/vesta-rest-netty/0.0.1/vesta-rest-netty-0.0.1-bin.tar.gz
+>wget http://ip:port/nexus/content/groups/public/com/robert/vesta/vesta-rest-netty/0.0.1/vesta-rest-netty-0.0.1-bin.tar.gz
 
 ** 2. 解压发布包到任意目录**
 

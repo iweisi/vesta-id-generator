@@ -14,7 +14,7 @@
 
 	<import resource="classpath:spring/vesta-service.xml" />
 
-	<dubbo:service interface="com.wanda.vesta.service.intf.IdService"
+	<dubbo:service interface="com.robert.vesta.service.intf.IdService"
 		ref="idService" />
 
 </beans>

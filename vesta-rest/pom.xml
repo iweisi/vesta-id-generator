@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- <parent> <groupId>com.wanda.vesta</groupId> <artifactId>vesta-id-generator</artifactId> 
+	<!-- <parent> <groupId>com.robert.vesta</groupId> <artifactId>vesta-id-generator</artifactId> 
 		<version>0.0.1</version> </parent> -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -11,7 +11,7 @@
 		<version>1.2.3.RELEASE</version>
 	</parent>
 
-	<groupId>com.wanda.vesta</groupId>
+	<groupId>com.robert.vesta</groupId>
 	<artifactId>vesta-rest</artifactId>
 	<version>0.0.1</version>
 	<name>vesta-rest</name>
@@ -34,7 +34,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.wanda.vesta</groupId>
+			<groupId>com.robert.vesta</groupId>
 			<artifactId>vesta-intf</artifactId>
 			<version>0.0.1</version>
 			<exclusions>
@@ -46,7 +46,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.wanda.vesta</groupId>
+			<groupId>com.robert.vesta</groupId>
 			<artifactId>vesta-service</artifactId>
 			<version>0.0.1</version>
 		</dependency>

@@ -20,7 +20,7 @@
 
 >```xml
 		<dependency>
-			<groupId>com.wanda.vesta</groupId>
+			<groupId>com.robert.vesta</groupId>
 			<artifactId>vesta-service</artifactId>
 			<version>0.0.1</version>
 		</dependency>
@@ -81,8 +81,8 @@
 package org.vesta.sample.embed;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.wanda.vesta.service.bean.Id;
-import com.wanda.vesta.service.intf.IdService;
+import com.robert.vesta.service.bean.Id;
+import com.robert.vesta.service.intf.IdService;
 public class EmbedSample {
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(

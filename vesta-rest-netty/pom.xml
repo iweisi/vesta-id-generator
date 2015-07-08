@@ -4,12 +4,12 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.wanda.vesta</groupId>
+		<groupId>com.robert.vesta</groupId>
 		<artifactId>vesta-id-generator</artifactId>
 		<version>0.0.1</version>
 	</parent>
 
-	<groupId>com.wanda.vesta</groupId>
+	<groupId>com.robert.vesta</groupId>
 	<artifactId>vesta-rest-netty</artifactId>
 	<version>0.0.1</version>
 	<name>vesta-rest-netty</name>
@@ -26,7 +26,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.wanda.vesta</groupId>
+			<groupId>com.robert.vesta</groupId>
 			<artifactId>vesta-intf</artifactId>
 			<version>0.0.1</version>
 			<exclusions>
@@ -38,7 +38,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.wanda.vesta</groupId>
+			<groupId>com.robert.vesta</groupId>
 			<artifactId>vesta-service</artifactId>
 			<version>0.0.1</version>
 		</dependency>
@@ -67,7 +67,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>com.wanda.vesta.rest.netty.VestaRestNettyServer</mainClass>
+							<mainClass>com.robert.vesta.rest.netty.VestaRestNettyServer</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

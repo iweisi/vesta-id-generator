@@ -18,7 +18,7 @@
 
 - 如果你通过源代码方式安装Vesta的发布包到你的Maven私服，你可以直接从你的Maven私服下载此安装包：
 
->wget http://ip:port/nexus/content/groups/public/com/wanda/vesta/vesta-server/0.0.1/vesta-server-0.0.1-bin.tar.gz
+>wget http://ip:port/nexus/content/groups/public/com/robert/vesta/vesta-server/0.0.1/vesta-server-0.0.1-bin.tar.gz
 
 ** 2. 解压发布包到任意目录**
 
@@ -81,7 +81,7 @@ Vesta RPC Server is started.
 
 >``` xml
 		<dependency>
-			<groupId>com.wanda.vesta</groupId>
+			<groupId>com.robert.vesta</groupId>
 			<artifactId>vesta-client</artifactId>
 			<version>0.0.1</version>
 		</dependency>
@@ -131,8 +131,8 @@ Vesta RPC Server is started.
 package org.vesta.sample.client;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.wanda.vesta.service.bean.Id;
-import com.wanda.vesta.service.intf.IdService;
+import com.robert.vesta.service.bean.Id;
+import com.robert.vesta.service.intf.IdService;
 public class EmbedSample {
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(

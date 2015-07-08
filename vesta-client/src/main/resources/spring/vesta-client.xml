@@ -10,6 +10,6 @@
 	<dubbo:registry address="${vesta.service.register.center}" />
 
 	<dubbo:reference id="idService"
-		interface="com.wanda.vesta.service.intf.IdService" />
+		interface="com.robert.vesta.service.intf.IdService" />
 
 </beans>

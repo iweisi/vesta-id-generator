@@ -4,11 +4,11 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.wanda.vesta</groupId>
+		<groupId>com.robert.vesta</groupId>
 		<artifactId>vesta-sample</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<groupId>com.wanda.vesta</groupId>
+	<groupId>com.robert.vesta</groupId>
 	<artifactId>vesta-sample-embed</artifactId>
 	<version>0.0.1</version>
 	<name>vesta-sample-embed</name>
@@ -25,7 +25,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.wanda.vesta</groupId>
+			<groupId>com.robert.vesta</groupId>
 			<artifactId>vesta-service</artifactId>
 			<version>0.0.1</version>
 		</dependency>

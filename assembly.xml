@@ -13,14 +13,14 @@
 	<moduleSets>
 		<moduleSet>
 			<includes>
-				<include>com.wanda.vesta:vesta-service</include>
-				<include>com.wanda.vesta:vesta-server</include>
-				<include>com.wanda.vesta:vesta-rest-netty</include>
-				<include>com.wanda.vesta:vesta-rest</include>
-				<include>com.wanda.vesta:vesta-intf</include>
-				<include>com.wanda.vesta:vesta-client</include>
-				<include>com.wanda.vesta:vesta-sample-client</include>
-				<include>com.wanda.vesta:vesta-sample-embed</include>
+				<include>com.robert.vesta:vesta-service</include>
+				<include>com.robert.vesta:vesta-server</include>
+				<include>com.robert.vesta:vesta-rest-netty</include>
+				<include>com.robert.vesta:vesta-rest</include>
+				<include>com.robert.vesta:vesta-intf</include>
+				<include>com.robert.vesta:vesta-client</include>
+				<include>com.robert.vesta:vesta-sample-client</include>
+				<include>com.robert.vesta:vesta-sample-embed</include>
 			</includes>
 
 			<binaries>
