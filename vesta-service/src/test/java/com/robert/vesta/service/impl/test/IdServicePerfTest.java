@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.robert.vesta.service.intf.IdService;
 
-public class PerfTest {
+public class IdServicePerfTest {
 
 	public static void main(String[] args) throws InterruptedException {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
@@ -62,6 +62,8 @@ public class PerfTest {
 
 		System.out.println("AVG(us): " + sum / 1000 / 1000000);
 		System.out.println("MAX(ms): " + max / 1000000);
+
+		// Result is about 400,000 per second
 	}
 
 }

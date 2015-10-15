@@ -71,8 +71,9 @@ public abstract class AbstractIdServiceImpl implements IdService {
 
 		long ret = idConverter.convert(id);
 
-		if (log.isDebugEnabled())
-			log.debug(String.format("Id: %s => %d", id, ret));
+		// Use trace because it cause low performance
+		if (log.isTraceEnabled())
+			log.trace(String.format("Id: %s => %d", id, ret));
 
 		return ret;
 	}
