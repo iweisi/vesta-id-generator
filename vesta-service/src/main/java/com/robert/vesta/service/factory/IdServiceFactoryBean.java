@@ -139,7 +139,7 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 	}
 
 	public boolean isSingleton() {
-		return false;
+		return true;
 	}
 
 	public Type getType() {

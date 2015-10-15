@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<bean id="idServiceIpConfigurable" class="com.robert.vesta.service.impl.IdServiceImpl"
+		init-method="init">
+		<property name="machineIdProvider" ref="ipConfigurableMachineIdProvider" />
+	</bean>
+
+	<bean id="ipConfigurableMachineIdProvider"
+		class="com.robert.vesta.service.impl.provider.IpConfigurableMachineIdProvider" init-method="init">
+		<property name="ips" value="${vesta.ips}" />
+	</bean>
+
+</beans>

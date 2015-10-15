@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.robert.vesta.service.bean.Id;
 import com.robert.vesta.service.intf.IdService;
 
+// There is only one factory bean in a single spring context, so we should create spring context for each test
 public class IdServiceFactoryBeanTest {
 
 	@Test(groups = { "idService" })
