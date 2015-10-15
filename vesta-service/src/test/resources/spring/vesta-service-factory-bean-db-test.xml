@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:spring/vesta-service.properties" />
+	</bean>
+
+	<bean id="idServiceDb" class="com.robert.vesta.service.factory.IdServiceFactoryBean"
+		init-method="init">
+		<property name="type" value="DB" />
+
+		<property name="dbUrl" value="${vesta.db.url}" />
+		<property name="dbName" value="${vesta.db.dbname}" />
+		<property name="dbUser" value="${vesta.db.user}" />
+		<property name="dbPassword" value="${vesta.db.password}" />
+	</bean>
+</beans>

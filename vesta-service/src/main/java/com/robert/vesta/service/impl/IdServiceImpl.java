@@ -6,7 +6,6 @@ import java.util.concurrent.locks.ReentrantLock;
 import com.robert.vesta.service.bean.Id;
 import com.robert.vesta.service.impl.bean.IdType;
 import com.robert.vesta.service.intf.IdService;
-import com.robert.vesta.util.IpUtils;
 
 public class IdServiceImpl extends AbstractIdServiceImpl implements IdService {
 	private long sequence = 0;
@@ -87,9 +86,5 @@ public class IdServiceImpl extends AbstractIdServiceImpl implements IdService {
 					timestamp));
 
 		return timestamp;
-	}
-
-	public static void main(String[] args) {
-		System.out.println(IpUtils.getHostIp());
 	}
 }

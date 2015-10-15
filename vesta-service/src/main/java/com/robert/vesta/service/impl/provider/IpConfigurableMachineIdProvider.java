@@ -38,7 +38,7 @@ public class IpConfigurableMachineIdProvider implements MachineIdProvider {
 
 		if (!ipsMap.containsKey(ip)) {
 			String msg = String
-					.format("Fail to configure ID for host IP address {}. Stop to initialize the IpConfigurableMachineIdProvider provider.",
+					.format("Fail to configure ID for host IP address %s. Stop to initialize the IpConfigurableMachineIdProvider provider.",
 							ip);
 
 			log.error(msg);
