@@ -8,9 +8,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.robert.vesta.service.bean.Id;
-import com.robert.vesta.service.impl.IdConverter;
-import com.robert.vesta.service.impl.IdConverterImpl;
 import com.robert.vesta.service.impl.bean.IdType;
+import com.robert.vesta.service.impl.converter.IdConverter;
+import com.robert.vesta.service.impl.converter.IdConverterImpl;
 import com.robert.vesta.service.intf.IdService;
 
 public class VestaClientTest extends TestCase {

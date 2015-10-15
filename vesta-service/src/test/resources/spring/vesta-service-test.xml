@@ -10,6 +10,82 @@
 		<property name="locations" value="classpath:spring/vesta-service.properties" />
 	</bean>
 
-	<import resource="classpath:spring/vesta-service.xml" />
+	<bean id="idService" class="com.robert.vesta.service.impl.IdServiceImpl"
+		init-method="init">
+		<property name="machineIdProvider" ref="propertyMachineIdProvider" />
+	</bean>
 
+	<bean id="propertyMachineIdProvider" class="com.robert.vesta.service.impl.provider.PropertyMachineIdProvider">
+		<property name="machineId" value="${vesta.machine}" />
+	</bean>
+
+	<bean id="idServiceIpConfigurable" class="com.robert.vesta.service.impl.IdServiceImpl"
+		init-method="init">
+		<property name="machineIdProvider" ref="ipConfigurableMachineIdProvider" />
+	</bean>
+
+	<bean id="ipConfigurableMachineIdProvider"
+		class="com.robert.vesta.service.impl.provider.IpConfigurableMachineIdProvider" init-method="init">
+		<property name="ips" value="${vesta.ips}" />
+	</bean>
+
+	<bean id="idServiceDb" class="com.robert.vesta.service.impl.IdServiceImpl"
+		init-method="init">
+		<property name="machineIdProvider" ref="dbMachineIdProvider" />
+	</bean>
+
+	<bean id="dbMachineIdProvider"
+		class="com.robert.vesta.service.impl.provider.DbMachineIdProvider" init-method="init">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+	<bean name="baseDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="minPoolSize">
+			<value>5</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>30</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+			<value>20</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>25</value>
+		</property>
+		<property name="breakAfterAcquireFailure">
+			<value>false</value>
+		</property>
+		<property name="checkoutTimeout">
+			<value>3000</value>
+		</property>
+		<property name="acquireRetryAttempts">
+			<value>50</value>
+		</property>
+		<property name="acquireRetryDelay">
+			<value>1000</value>
+		</property>
+	</bean>
+
+	<bean id="datasource" parent="baseDataSource">
+		<property name="jdbcUrl">
+			<value>jdbc:mysql://${vesta.db.url}/${vesta.db.dbname}?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</value>
+		</property>
+		<property name="user">
+			<value>${vesta.db.user}</value>
+		</property>
+		<property name="password">
+			<value>${vesta.db.password}</value>
+		</property>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		abstract="false" lazy-init="false" autowire="default"
+		dependency-check="default">
+		<property name="dataSource">
+			<ref bean="datasource" />
+		</property>
+	</bean>
 </beans>

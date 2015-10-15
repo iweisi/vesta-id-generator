@@ -26,7 +26,7 @@ public class IdMeta {
 	public void setSeqBits(byte seqBits) {
 		this.seqBits = seqBits;
 	}
-	
+
 	public long getSeqBitsMask() {
 		return -1L ^ -1L << seqBits;
 	}
@@ -58,7 +58,7 @@ public class IdMeta {
 	public long getMachineBitsStartPos() {
 		return seqBits + timeBits;
 	}
-	
+
 	public long getMachineBitsMask() {
 		return -1L ^ -1L << machineBits;
 	}
@@ -74,7 +74,7 @@ public class IdMeta {
 	public long getGenMethodBitsStartPos() {
 		return seqBits + timeBits + machineBits;
 	}
-	
+
 	public long getGenMethodBitsMask() {
 		return -1L ^ -1L << genMethodBits;
 	}
@@ -110,5 +110,4 @@ public class IdMeta {
 	public long getVersionBitsMask() {
 		return -1L ^ -1L << versionBits;
 	}
-
 }

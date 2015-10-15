@@ -2,19 +2,22 @@ package com.robert.vesta.service.impl;
 
 import java.util.Date;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.robert.vesta.service.bean.Id;
 import com.robert.vesta.service.impl.bean.IdMeta;
 import com.robert.vesta.service.impl.bean.IdMetaFactory;
 import com.robert.vesta.service.impl.bean.IdType;
+import com.robert.vesta.service.impl.converter.IdConverter;
+import com.robert.vesta.service.impl.converter.IdConverterImpl;
+import com.robert.vesta.service.impl.provider.MachineIdProvider;
 import com.robert.vesta.service.intf.IdService;
 
 public abstract class AbstractIdServiceImpl implements IdService {
 	public static final long EPOCH = 1420041600000L;
 
-	protected final Log log = LogFactory.getLog(this.getClass());
+	protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	protected long machineId = -1;
 	protected long genMethod = 0;
@@ -25,7 +28,6 @@ public abstract class AbstractIdServiceImpl implements IdService {
 	protected IdMeta idMeta;
 
 	protected IdConverter idConverter;
-	protected MachineIdProvider defaultMachineIdProvider;
 
 	protected MachineIdProvider machineIdProvider;
 
@@ -42,14 +44,10 @@ public abstract class AbstractIdServiceImpl implements IdService {
 	}
 
 	public void init() {
-		if (machineIdProvider != null)
-			this.machineId = machineIdProvider.getMachineId();
-		else
-			this.machineId = defaultMachineIdProvider.getMachineId();
+		this.machineId = machineIdProvider.getMachineId();
 
 		if (machineId < 0) {
-			if (log.isFatalEnabled())
-				log.fatal("The machine ID is not configured properly so that Vesta Service refuses to start.");
+			log.error("The machine ID is not configured properly so that Vesta Service refuses to start.");
 
 			throw new IllegalStateException(
 					"The machine ID is not configured properly so that Vesta Service refuses to start.");
@@ -155,13 +153,7 @@ public abstract class AbstractIdServiceImpl implements IdService {
 		this.idMeta = idMeta;
 	}
 
-	public void setDefaultMachineIdProvider(
-			MachineIdProvider defaultMachineIdProvider) {
-		this.defaultMachineIdProvider = defaultMachineIdProvider;
-	}
-
 	public void setMachineIdProvider(MachineIdProvider machineIdProvider) {
 		this.machineIdProvider = machineIdProvider;
 	}
-
 }

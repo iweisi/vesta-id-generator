@@ -33,7 +33,7 @@ public enum IdType {
 
 		return null;
 	}
-	
+
 	public static IdType parse(long type) {
 		if (type == 1)
 			return MIN_GRANULARITY;
@@ -42,5 +42,4 @@ public enum IdType {
 
 		return null;
 	}
-
 }

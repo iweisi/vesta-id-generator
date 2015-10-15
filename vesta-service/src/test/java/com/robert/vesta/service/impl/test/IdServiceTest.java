@@ -1,38 +1,61 @@
 package com.robert.vesta.service.impl.test;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 import com.robert.vesta.service.bean.Id;
 import com.robert.vesta.service.intf.IdService;
 
-public class IdServiceTest extends TestCase {
-	public IdServiceTest(String testName) {
-		super(testName);
-	}
+@ContextConfiguration(locations = "/spring/vesta-service-test.xml")
+public class IdServiceTest extends AbstractTestNGSpringContextTests {
 
-	public static Test suite() {
-		return new TestSuite(IdServiceTest.class);
-	}
-
+	@Test(groups = { "idService" })
 	public void testSimple() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				"spring/vesta-service-test.xml");
-		IdService idService = (IdService) ac.getBean("idService");
+		IdService idService = (IdService) applicationContext
+				.getBean("idService");
 
 		long id = idService.genId();
 		Id ido = idService.expId(id);
 		long id1 = idService.makeId(ido.getVersion(), ido.getType(),
 				ido.getGenMethod(), ido.getMachine(), ido.getTime(),
 				ido.getSeq());
-		
-		System.out.println(id + ":" + ido);
 
-		assertEquals(id, id1);
+		System.err.println(id + ":" + ido);
+
+		AssertJUnit.assertEquals(id, id1);
 	}
 
+	@Test(groups = { "idService" })
+	public void testIpConfigurable() {
+		IdService idService = (IdService) applicationContext
+				.getBean("idServiceIpConfigurable");
+
+		long id = idService.genId();
+		Id ido = idService.expId(id);
+		long id1 = idService.makeId(ido.getVersion(), ido.getType(),
+				ido.getGenMethod(), ido.getMachine(), ido.getTime(),
+				ido.getSeq());
+
+		System.err.println(id + ":" + ido);
+
+		AssertJUnit.assertEquals(id, id1);
+	}
+
+	@Test(groups = { "idService" })
+	public void testDb() {
+		IdService idService = (IdService) applicationContext
+				.getBean("idServiceDb");
+
+		long id = idService.genId();
+		Id ido = idService.expId(id);
+		long id1 = idService.makeId(ido.getVersion(), ido.getType(),
+				ido.getGenMethod(), ido.getMachine(), ido.getTime(),
+				ido.getSeq());
+
+		System.err.println(id + ":" + ido);
+
+		AssertJUnit.assertEquals(id, id1);
+	}
 }

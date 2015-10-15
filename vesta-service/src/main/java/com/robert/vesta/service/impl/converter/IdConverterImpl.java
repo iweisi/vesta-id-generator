@@ -1,4 +1,4 @@
-package com.robert.vesta.service.impl;
+package com.robert.vesta.service.impl.converter;
 
 import com.robert.vesta.service.bean.Id;
 import com.robert.vesta.service.impl.bean.IdMeta;
@@ -21,11 +21,11 @@ public class IdConverterImpl implements IdConverter {
 
 	protected long doConvert(Id id, IdMeta idMeta) {
 		long ret = 0;
-		
+
 		ret |= id.getSeq();
 
 		ret |= id.getTime() << idMeta.getTimeBitsStartPos();
-		
+
 		ret |= id.getMachine() << idMeta.getMachineBitsStartPos();
 
 		ret |= id.getGenMethod() << idMeta.getGenMethodBitsStartPos();
@@ -48,9 +48,9 @@ public class IdConverterImpl implements IdConverter {
 
 		ret.setTime((id >>> idMeta.getTimeBitsStartPos())
 				& idMeta.getTimeBitsMask());
-		
+
 		ret.setMachine((id >>> idMeta.getMachineBitsStartPos())
-				& idMeta.getMachineBitsMask());		
+				& idMeta.getMachineBitsMask());
 
 		ret.setGenMethod((id >>> idMeta.getGenMethodBitsStartPos())
 				& idMeta.getGenMethodBitsMask());

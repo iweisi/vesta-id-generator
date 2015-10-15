@@ -7,6 +7,7 @@
 *.class
 *.tmp
 /tomcat.10025
+/test-output
 
 # Package Files #
 *.jar
