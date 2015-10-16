@@ -12,7 +12,8 @@
 
 	<bean id="idService" class="com.robert.vesta.service.factory.IdServiceFactoryBean"
 		init-method="init">
-		<property name="type" value="PROPERTY" />
+		<property name="providerType" value="PROPERTY" />
+		
 		<property name="machineId" value="${vesta.machine}" />
 	</bean>
 	

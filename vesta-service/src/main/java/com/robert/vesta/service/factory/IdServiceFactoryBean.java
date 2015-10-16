@@ -22,7 +22,7 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 		PROPERTY, IP_CONFIGURABLE, DB
 	};
 
-	private Type type;
+	private Type providerType;
 
 	private long machineId;
 
@@ -33,16 +33,20 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 	private String dbUser;
 	private String dbPassword;
 
+	private long genMethod = -1;
+	private long type = -1;
+	private long version = -1;
+
 	private IdService idService;
 
 	public void init() {
-		if (type == null) {
+		if (providerType == null) {
 			log.error("The type of Id service is mandatory.");
 			throw new IllegalArgumentException(
 					"The type of Id service is mandatory.");
 		}
 
-		switch (type) {
+		switch (providerType) {
 		case PROPERTY:
 			idService = constructPropertyIdService(machineId);
 			break;
@@ -67,6 +71,12 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 
 		IdServiceImpl idServiceImpl = new IdServiceImpl();
 		idServiceImpl.setMachineIdProvider(propertyMachineIdProvider);
+		if (genMethod != -1)
+			idServiceImpl.setGenMethod(genMethod);
+		if (type != -1)
+			idServiceImpl.setType(type);
+		if (version != -1)
+			idServiceImpl.setVersion(version);
 		idServiceImpl.init();
 
 		return idServiceImpl;
@@ -80,6 +90,12 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 
 		IdServiceImpl idServiceImpl = new IdServiceImpl();
 		idServiceImpl.setMachineIdProvider(ipConfigurableMachineIdProvider);
+		if (genMethod != -1)
+			idServiceImpl.setGenMethod(genMethod);
+		if (type != -1)
+			idServiceImpl.setType(type);
+		if (version != -1)
+			idServiceImpl.setVersion(version);
 		idServiceImpl.init();
 
 		return idServiceImpl;
@@ -129,6 +145,12 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 
 		IdServiceImpl idServiceImpl = new IdServiceImpl();
 		idServiceImpl.setMachineIdProvider(dbMachineIdProvider);
+		if (genMethod != -1)
+			idServiceImpl.setGenMethod(genMethod);
+		if (type != -1)
+			idServiceImpl.setType(type);
+		if (version != -1)
+			idServiceImpl.setVersion(version);
 		idServiceImpl.init();
 
 		return idServiceImpl;
@@ -142,12 +164,12 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 		return true;
 	}
 
-	public Type getType() {
-		return type;
+	public Type getProviderType() {
+		return providerType;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setProviderType(Type providerType) {
+		this.providerType = providerType;
 	}
 
 	public long getMachineId() {
@@ -196,5 +218,29 @@ public class IdServiceFactoryBean implements FactoryBean<IdService> {
 
 	public void setDbPassword(String dbPassword) {
 		this.dbPassword = dbPassword;
+	}
+
+	public long getGenMethod() {
+		return genMethod;
+	}
+
+	public void setGenMethod(long genMethod) {
+		this.genMethod = genMethod;
+	}
+
+	public long getType() {
+		return type;
+	}
+
+	public void setType(long type) {
+		this.type = type;
+	}
+
+	public long getVersion() {
+		return version;
+	}
+
+	public void setVersion(long version) {
+		this.version = version;
 	}
 }

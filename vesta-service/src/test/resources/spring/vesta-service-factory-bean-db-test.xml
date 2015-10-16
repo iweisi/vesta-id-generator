@@ -12,7 +12,7 @@
 
 	<bean id="idServiceDb" class="com.robert.vesta.service.factory.IdServiceFactoryBean"
 		init-method="init">
-		<property name="type" value="DB" />
+		<property name="providerType" value="DB" />
 
 		<property name="dbUrl" value="${vesta.db.url}" />
 		<property name="dbName" value="${vesta.db.dbname}" />

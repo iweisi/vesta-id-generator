@@ -11,8 +11,7 @@
 
 	<dubbo:protocol name="dubbo" port="${vesta.service.port}" />
 
-
-	<import resource="classpath:spring/vesta-service.xml" />
+	<import resource="classpath:spring/vesta-service-property-factory-bean.xml" />
 
 	<dubbo:service interface="com.robert.vesta.service.intf.IdService"
 		ref="idService" />

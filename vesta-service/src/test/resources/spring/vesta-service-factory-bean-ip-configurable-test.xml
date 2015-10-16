@@ -12,7 +12,7 @@
 
 	<bean id="idServiceIpConfigurable" class="com.robert.vesta.service.factory.IdServiceFactoryBean"
 		init-method="init">
-		<property name="type" value="IP_CONFIGURABLE" />
+		<property name="providerType" value="IP_CONFIGURABLE" />
 		
 		<property name="ips" value="${vesta.ips}" />
 	</bean>
