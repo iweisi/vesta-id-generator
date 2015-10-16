@@ -10,6 +10,6 @@
 		<property name="locations" value="classpath:spring/vesta-service.properties" />
 	</bean>
 
-	<import resource="classpath:spring/vesta-service.xml" />
+	<import resource="classpath:spring/vesta-service-property-factory-bean.xml" />
 
 </beans>

@@ -12,5 +12,4 @@
 
 
 	<import resource="classpath:spring/vesta-server.xml" />
-
 </beans>
