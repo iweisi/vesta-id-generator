@@ -10,6 +10,12 @@
 		<property name="locations" value="classpath:spring/vesta-rest.properties" />
 	</bean>
 
-	<import resource="classpath:spring/vesta-service-property-factory-bean.xml" />
+	<bean id="idService" class="com.robert.vesta.service.factory.IdServiceFactoryBean"
+		init-method="init">
+		<property name="providerType" value="PROPERTY" />
+
+		<property name="genMethod" value="${vesta.genMethod}" />
+		<property name="machineId" value="${vesta.machine}" />
+	</bean>
 
 </beans>
