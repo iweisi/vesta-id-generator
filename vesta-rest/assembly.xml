@@ -11,6 +11,7 @@
 		<fileSet>
 			<outputDirectory>bin</outputDirectory>
 			<directory>${basedir}/src/main/scripts/</directory>
+			<fileMode>755</fileMode>
 		</fileSet>
 
 		<fileSet>
@@ -19,15 +20,6 @@
 			
 			<includes>
 				<include>*.jar</include>
-			</includes>
-		</fileSet>
-
-		<fileSet>
-			<outputDirectory>conf</outputDirectory>
-
-			<directory>${basedir}/src/test/resources/spring/</directory>
-			<includes>
-				<include>vesta-rest.properties</include>
 			</includes>
 		</fileSet>
 

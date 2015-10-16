@@ -19,15 +19,7 @@
 		<fileSet>
 			<outputDirectory>bin</outputDirectory>
 			<directory>${basedir}/src/main/scripts/</directory>
-		</fileSet>
-
-		<fileSet>
-			<outputDirectory>conf</outputDirectory>
-
-			<directory>${basedir}/src/test/resources/spring/</directory>
-			<includes>
-				<include>vesta-rest-netty.properties</include>
-			</includes>
+			<fileMode>755</fileMode>
 		</fileSet>
 
 		<fileSet>

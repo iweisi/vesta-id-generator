@@ -51,6 +51,12 @@
 			<version>0.0.1</version>
 		</dependency>
 
+		<!-- without h2 it throws an exception when spring boot boots! -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.156</version>
+		</dependency>
 	</dependencies>
 
 	<build>
