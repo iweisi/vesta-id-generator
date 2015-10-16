@@ -12,7 +12,7 @@ APP_PATH=${APP_PATH:-`dirname "$BASE_PATH"`}
 #设置java运行参数
 GC_OPTS=" -server -Xms512m -Xmx512m -Xmn128m -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=60"
 GC_LOG_OPTS=" -verbose:gc  -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution  -XX:+PrintGCDetails -Xloggc:./logs/gc.log"
-PRG_OPTS=" -Dvesta.server.properties.file=$APP_PATH/conf/vesta-server.properties"
+PRG_OPTS=""
 
 #应用客户化变量
 if [ -f $APP_PATH/conf/custom.properties ]

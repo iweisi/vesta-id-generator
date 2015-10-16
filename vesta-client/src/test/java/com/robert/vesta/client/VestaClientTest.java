@@ -1,11 +1,9 @@
 package com.robert.vesta.client;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 import com.robert.vesta.service.bean.Id;
 import com.robert.vesta.service.impl.bean.IdType;
@@ -13,28 +11,21 @@ import com.robert.vesta.service.impl.converter.IdConverter;
 import com.robert.vesta.service.impl.converter.IdConverterImpl;
 import com.robert.vesta.service.intf.IdService;
 
-public class VestaClientTest extends TestCase {
-	public VestaClientTest(String testName) {
-		super(testName);
-	}
+@ContextConfiguration(locations = "/spring/vesta-client-test.xml")
+public class VestaClientTest extends AbstractTestNGSpringContextTests {
 
-	public static Test suite() {
-		return new TestSuite(VestaClientTest.class);
-	}
-
+	@Test(groups = { "idServiceClient" })
 	public void testSimple() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				"spring/vesta-client-test.xml");
-
-		IdService idService = (IdService) ac.getBean("idService");
+		IdService idService = (IdService) applicationContext
+				.getBean("idService");
 		long id = idService.genId();
 		Id ido = idService.expId(id);
 
 		IdConverter idConverter = new IdConverterImpl(IdType.MAX_PEAK);
 		long id1 = idConverter.convert(ido);
-		
-		assertEquals(id, id1);
-		
+
+		AssertJUnit.assertEquals(id, id1);
+
 		System.out.println(id);
 		System.out.println(id1);
 	}
