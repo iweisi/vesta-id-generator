@@ -94,27 +94,27 @@ public abstract class AbstractIdServiceImpl implements IdService {
 	}
 
 	public long makeId(long time, long seq) {
-		return makeId(machineId, time, seq);
+		return makeId(time, seq, machineId);
 	}
 
-	public long makeId(long machine, long time, long seq) {
-		return makeId(genMethod, machine, time, seq);
+	public long makeId(long time, long seq, long machine) {
+		return makeId(genMethod, time, seq, machine);
 	}
 
-	public long makeId(long genMethod, long machine, long time, long seq) {
-		return makeId(type, genMethod, machine, time, seq);
+	public long makeId(long genMethod, long time, long seq, long machine) {
+		return makeId(type, genMethod, time, seq, machine);
 	}
 
-	public long makeId(long type, long genMethod, long machine, long time,
-			long seq) {
-		return makeId(version, type, genMethod, machine, time, seq);
+	public long makeId(long type, long genMethod,  long time,
+			long seq, long machine) {
+		return makeId(version, type, genMethod, time, seq, machine);
 	}
 
-	public long makeId(long version, long type, long genMethod, long machine,
-			long time, long seq) {
+	public long makeId(long version, long type, long genMethod, 
+			long time, long seq, long machine) {
 		IdType idType = IdType.parse(type);
 
-		Id id = new Id(seq, time, machine, genMethod, type, version);
+		Id id = new Id(machine, seq, time, genMethod, type, version);
 		IdConverter idConverter = new IdConverterImpl(idType);
 
 		return idConverter.convert(id);

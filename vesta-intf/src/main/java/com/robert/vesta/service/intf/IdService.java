@@ -12,15 +12,15 @@ public interface IdService {
 
 	public long makeId(long time, long seq);
 
-	public long makeId(long machine, long time, long seq);
+	public long makeId(long time, long seq, long machine);
 
-	public long makeId(long genMethod, long machine, long time, long seq);
+	public long makeId(long genMethod, long time, long seq, long machine);
 
-	public long makeId(long type, long genMethod, long machine, long time,
-			long seq);
+	public long makeId(long type, long genMethod,  long time,
+			long seq, long machine);
 
-	public long makeId(long version, long type, long genMethod, long machine,
-			long time, long seq);
+	public long makeId(long version, long type, long genMethod, 
+			long time, long seq, long machine);
 
 	public Date transTime(long time);
 }

@@ -6,69 +6,65 @@ import com.robert.vesta.service.impl.bean.IdMetaFactory;
 import com.robert.vesta.service.impl.bean.IdType;
 
 public class IdConverterImpl implements IdConverter {
-	private IdType idType;
 
-	public IdConverterImpl() {
-	}
+    private IdType idType;
 
-	public IdConverterImpl(IdType idType) {
-		this.idType = idType;
-	}
+    public IdConverterImpl() {
+    }
 
-	public long convert(Id id) {
-		return doConvert(id, IdMetaFactory.getIdMeta(idType));
-	}
+    public IdConverterImpl(IdType idType) {
+        this.idType = idType;
+    }
 
-	protected long doConvert(Id id, IdMeta idMeta) {
-		long ret = 0;
+    public long convert(Id id) {
+        return doConvert(id, IdMetaFactory.getIdMeta(idType));
+    }
 
-		ret |= id.getSeq();
+    protected long doConvert(Id id, IdMeta idMeta) {
+        long ret = 0;
 
-		ret |= id.getTime() << idMeta.getTimeBitsStartPos();
+        ret |= id.getMachine();
 
-		ret |= id.getMachine() << idMeta.getMachineBitsStartPos();
+        ret |= id.getSeq() << idMeta.getSeqBitsStartPos();
 
-		ret |= id.getGenMethod() << idMeta.getGenMethodBitsStartPos();
+        ret |= id.getTime() << idMeta.getTimeBitsStartPos();
 
-		ret |= id.getType() << idMeta.getTypeBitsStartPos();
+        ret |= id.getGenMethod() << idMeta.getGenMethodBitsStartPos();
 
-		ret |= id.getVersion() << idMeta.getVersionBitsStartPos();
+        ret |= id.getType() << idMeta.getTypeBitsStartPos();
 
-		return ret;
-	}
+        ret |= id.getVersion() << idMeta.getVersionBitsStartPos();
 
-	public Id convert(long id) {
-		return doConvert(id, IdMetaFactory.getIdMeta(idType));
-	}
+        return ret;
+    }
 
-	protected Id doConvert(long id, IdMeta idMeta) {
-		Id ret = new Id();
+    public Id convert(long id) {
+        return doConvert(id, IdMetaFactory.getIdMeta(idType));
+    }
 
-		ret.setSeq(id & idMeta.getSeqBitsMask());
+    protected Id doConvert(long id, IdMeta idMeta) {
+        Id ret = new Id();
 
-		ret.setTime((id >>> idMeta.getTimeBitsStartPos())
-				& idMeta.getTimeBitsMask());
+        ret.setMachine(id & idMeta.getMachineBitsMask());
 
-		ret.setMachine((id >>> idMeta.getMachineBitsStartPos())
-				& idMeta.getMachineBitsMask());
+        ret.setSeq((id >>> idMeta.getSeqBitsStartPos()) & idMeta.getSeqBitsMask());
 
-		ret.setGenMethod((id >>> idMeta.getGenMethodBitsStartPos())
-				& idMeta.getGenMethodBitsMask());
+        ret.setTime((id >>> idMeta.getTimeBitsStartPos()) & idMeta.getTimeBitsMask());
 
-		ret.setType((id >>> idMeta.getTypeBitsStartPos())
-				& idMeta.getTypeBitsMask());
+        ret.setGenMethod((id >>> idMeta.getGenMethodBitsStartPos()) & idMeta.getGenMethodBitsMask());
 
-		ret.setVersion((id >>> idMeta.getVersionBitsStartPos())
-				& idMeta.getVersionBitsMask());
+        ret.setType((id >>> idMeta.getTypeBitsStartPos()) & idMeta.getTypeBitsMask());
 
-		return ret;
-	}
+        ret.setVersion((id >>> idMeta.getVersionBitsStartPos()) & idMeta.getVersionBitsMask());
 
-	public IdType getIdType() {
-		return idType;
-	}
+        return ret;
+    }
 
-	public void setIdType(IdType idType) {
-		this.idType = idType;
-	}
+    public IdType getIdType() {
+        return idType;
+    }
+
+    public void setIdType(IdType idType) {
+        this.idType = idType;
+    }
 }

@@ -1,113 +1,119 @@
 package com.robert.vesta.service.impl.bean;
 
 public class IdMeta {
-	private byte seqBits;
-	private byte timeBits;
-	private byte machineBits;
-	private byte genMethodBits;
-	private byte typeBits;
-	private byte versionBits;
 
-	public IdMeta(byte seqBits, byte timeBits, byte machineBits,
-			byte genMethodBits, byte typeBits, byte versionBits) {
-		super();
-		this.seqBits = seqBits;
-		this.timeBits = timeBits;
-		this.machineBits = machineBits;
-		this.genMethodBits = genMethodBits;
-		this.typeBits = typeBits;
-		this.versionBits = versionBits;
-	}
+    private byte machineBits;
 
-	public byte getSeqBits() {
-		return seqBits;
-	}
+    private byte seqBits;
 
-	public void setSeqBits(byte seqBits) {
-		this.seqBits = seqBits;
-	}
+    private byte timeBits;
 
-	public long getSeqBitsMask() {
-		return -1L ^ -1L << seqBits;
-	}
+    private byte genMethodBits;
 
-	public byte getTimeBits() {
-		return timeBits;
-	}
+    private byte typeBits;
 
-	public void setTimeBits(byte timeBits) {
-		this.timeBits = timeBits;
-	}
+    private byte versionBits;
 
-	public long getTimeBitsStartPos() {
-		return seqBits;
-	}
+    public IdMeta(byte machineBits, byte seqBits, byte timeBits, byte genMethodBits, byte typeBits, byte versionBits) {
+        super();
 
-	public long getTimeBitsMask() {
-		return -1L ^ -1L << timeBits;
-	}
+        this.machineBits = machineBits;
+        this.seqBits = seqBits;
+        this.timeBits = timeBits;
+        this.genMethodBits = genMethodBits;
+        this.typeBits = typeBits;
+        this.versionBits = versionBits;
+    }
 
-	public byte getMachineBits() {
-		return machineBits;
-	}
+    public byte getMachineBits() {
+        return machineBits;
+    }
 
-	public void setMachineBits(byte machineBits) {
-		this.machineBits = machineBits;
-	}
+    public void setMachineBits(byte machineBits) {
+        this.machineBits = machineBits;
+    }
 
-	public long getMachineBitsStartPos() {
-		return seqBits + timeBits;
-	}
+    public long getMachineBitsMask() {
+        return -1L ^ -1L << machineBits;
+    }
 
-	public long getMachineBitsMask() {
-		return -1L ^ -1L << machineBits;
-	}
+    public byte getSeqBits() {
+        return seqBits;
+    }
 
-	public byte getGenMethodBits() {
-		return genMethodBits;
-	}
+    public void setSeqBits(byte seqBits) {
+        this.seqBits = seqBits;
+    }
 
-	public void setGenMethodBits(byte genMethodBits) {
-		this.genMethodBits = genMethodBits;
-	}
+    public long getSeqBitsStartPos() {
+        return machineBits;
+    }
 
-	public long getGenMethodBitsStartPos() {
-		return seqBits + timeBits + machineBits;
-	}
+    public long getSeqBitsMask() {
+        return -1L ^ -1L << seqBits;
+    }
 
-	public long getGenMethodBitsMask() {
-		return -1L ^ -1L << genMethodBits;
-	}
+    public byte getTimeBits() {
+        return timeBits;
+    }
 
-	public byte getTypeBits() {
-		return typeBits;
-	}
+    public void setTimeBits(byte timeBits) {
+        this.timeBits = timeBits;
+    }
 
-	public void setTypeBits(byte typeBits) {
-		this.typeBits = typeBits;
-	}
+    public long getTimeBitsStartPos() {
+        return machineBits + seqBits;
+    }
 
-	public long getTypeBitsStartPos() {
-		return seqBits + timeBits + machineBits + genMethodBits;
-	}
+    public long getTimeBitsMask() {
+        return -1L ^ -1L << timeBits;
+    }
 
-	public long getTypeBitsMask() {
-		return -1L ^ -1L << typeBits;
-	}
+    public byte getGenMethodBits() {
+        return genMethodBits;
+    }
 
-	public byte getVersionBits() {
-		return versionBits;
-	}
+    public void setGenMethodBits(byte genMethodBits) {
+        this.genMethodBits = genMethodBits;
+    }
 
-	public void setVersionBits(byte versionBits) {
-		this.versionBits = versionBits;
-	}
+    public long getGenMethodBitsStartPos() {
+        return machineBits + seqBits + timeBits;
+    }
 
-	public long getVersionBitsStartPos() {
-		return seqBits + timeBits + machineBits + genMethodBits + typeBits;
-	}
+    public long getGenMethodBitsMask() {
+        return -1L ^ -1L << genMethodBits;
+    }
 
-	public long getVersionBitsMask() {
-		return -1L ^ -1L << versionBits;
-	}
+    public byte getTypeBits() {
+        return typeBits;
+    }
+
+    public void setTypeBits(byte typeBits) {
+        this.typeBits = typeBits;
+    }
+
+    public long getTypeBitsStartPos() {
+        return machineBits + seqBits + timeBits + genMethodBits;
+    }
+
+    public long getTypeBitsMask() {
+        return -1L ^ -1L << typeBits;
+    }
+
+    public byte getVersionBits() {
+        return versionBits;
+    }
+
+    public void setVersionBits(byte versionBits) {
+        this.versionBits = versionBits;
+    }
+
+    public long getVersionBitsStartPos() {
+        return machineBits + seqBits + timeBits + genMethodBits + typeBits;
+    }
+
+    public long getVersionBitsMask() {
+        return -1L ^ -1L << versionBits;
+    }
 }
