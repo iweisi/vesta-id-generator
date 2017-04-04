@@ -36,4 +36,5 @@
 ## 联系我们
 
 
-<a href="http://cloudate.net/wp-content/uploads/2015/01/cloudate-qrcode.jpg"><img src="./vesta-theme/assets/images/互联网金融技术圈微信QR.jpeg" alt="cloudate-qrcode" width="200" height="200" class="alignnone size-full wp-image-1138" /></a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</spac><a href="http://cloudate.net/wp-content/uploads/2015/01/cloudate-qrcode.jpg"><img src="./vesta-theme/assets/images/我的微信QR.jpeg" alt="cloudate-qrcode" width="200" height="200" class="alignnone size-full wp-image-1138" /></a>
+<a href="./vesta-theme/assets/images/我的微信QR.jpeg"><img src="./vesta-theme/assets/images/我的微信QR.jpeg" alt="cloudate-qrcode" width="252" height="350" class="alignnone size-full wp-image-1138" /></a>
+<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="./vesta-theme/assets/images/互联网金融技术圈微信QR.jpeg"><img src="./vesta-theme/assets/images/互联网金融技术圈微信QR.jpeg" alt="cloudate-qrcode" width="252" height="350" class="alignnone size-full wp-image-1138" /></a>
