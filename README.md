@@ -37,4 +37,3 @@
 
 
 <a href="./vesta-theme/assets/images/我的微信QR.jpeg"><img src="./vesta-theme/assets/images/我的微信QR.jpeg" alt="cloudate-qrcode" width="150" height="190" class="alignnone size-full wp-image-1138" /></a>
-<span>
