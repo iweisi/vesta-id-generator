@@ -17,7 +17,12 @@ public class VestaServer {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		while (!"exit".equals(br.readLine()))
-			;
+            try {
+                Thread.sleep(60000);
+            } catch (InterruptedException e) {
+                // If error, print it to console
+                e.printStackTrace();
+            };
 	}
 
 }
