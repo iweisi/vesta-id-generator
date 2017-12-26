@@ -6,14 +6,14 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpServerCodec;
 
 public class VestaRestNettyServerInitializer extends
-		ChannelInitializer<SocketChannel> {
-	private VestaRestNettyServerHandler handler = new VestaRestNettyServerHandler();
+        ChannelInitializer<SocketChannel> {
+    private VestaRestNettyServerHandler handler = new VestaRestNettyServerHandler();
 
-	@Override
-	public void initChannel(SocketChannel ch) throws Exception {
-		ChannelPipeline p = ch.pipeline();
+    @Override
+    public void initChannel(SocketChannel ch) throws Exception {
+        ChannelPipeline p = ch.pipeline();
 
-		p.addLast("codec", new HttpServerCodec());
-		p.addLast("handler", handler);
-	}
+        p.addLast("codec", new HttpServerCodec());
+        p.addLast("handler", handler);
+    }
 }

@@ -1,32 +1,32 @@
 <assembly>
-	<id>bin</id>
+    <id>bin</id>
 
-	<formats>
-		<format>tar.gz</format>
-	</formats>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
 
-	<includeBaseDirectory>true</includeBaseDirectory>
+    <includeBaseDirectory>true</includeBaseDirectory>
 
-	<dependencySets>
-		<dependencySet>
-			<outputDirectory>lib</outputDirectory>
-			<useProjectArtifact>true</useProjectArtifact>
-			<scope>runtime</scope>
-		</dependencySet>
-	</dependencySets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
 
-	<fileSets>
-		<fileSet>
-			<outputDirectory>bin</outputDirectory>
-			<directory>${basedir}/src/main/scripts/</directory>
-			<fileMode>755</fileMode>
-		</fileSet>
+    <fileSets>
+        <fileSet>
+            <outputDirectory>bin</outputDirectory>
+            <directory>${basedir}/src/main/scripts/</directory>
+            <fileMode>755</fileMode>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>/</outputDirectory>
-			<includes>
-				<include>${basedir}/README.MD</include>
-			</includes>
-		</fileSet>
-	</fileSets>
+        <fileSet>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>${basedir}/README.MD</include>
+            </includes>
+        </fileSet>
+    </fileSets>
 </assembly>

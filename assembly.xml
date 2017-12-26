@@ -1,158 +1,158 @@
 <assembly
-	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
-	<id>release</id>
+        xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+    <id>release</id>
 
-	<formats>
-		<format>dir</format>
-	</formats>
+    <formats>
+        <format>dir</format>
+    </formats>
 
-	<includeBaseDirectory>false</includeBaseDirectory>
+    <includeBaseDirectory>false</includeBaseDirectory>
 
-	<moduleSets>
-		<moduleSet>
-			<includes>
-				<include>com.robert.vesta:vesta-service</include>
-				<include>com.robert.vesta:vesta-server</include>
-				<include>com.robert.vesta:vesta-rest-netty</include>
-				<include>com.robert.vesta:vesta-rest</include>
-				<include>com.robert.vesta:vesta-intf</include>
-				<include>com.robert.vesta:vesta-client</include>
-				<include>com.robert.vesta:vesta-sample-client</include>
-				<include>com.robert.vesta:vesta-sample-embed</include>
-			</includes>
+    <moduleSets>
+        <moduleSet>
+            <includes>
+                <include>com.robert.vesta:vesta-service</include>
+                <include>com.robert.vesta:vesta-server</include>
+                <include>com.robert.vesta:vesta-rest-netty</include>
+                <include>com.robert.vesta:vesta-rest</include>
+                <include>com.robert.vesta:vesta-intf</include>
+                <include>com.robert.vesta:vesta-client</include>
+                <include>com.robert.vesta:vesta-sample-client</include>
+                <include>com.robert.vesta:vesta-sample-embed</include>
+            </includes>
 
-			<binaries>
-				<outputDirectory>lib</outputDirectory>
-				<unpack>false</unpack>
-			</binaries>
-		</moduleSet>
-	</moduleSets>
+            <binaries>
+                <outputDirectory>lib</outputDirectory>
+                <unpack>false</unpack>
+            </binaries>
+        </moduleSet>
+    </moduleSets>
 
-	<fileSets>
-		<!-- bin dir -->
-		<fileSet>
-			<outputDirectory>bin</outputDirectory>
+    <fileSets>
+        <!-- bin dir -->
+        <fileSet>
+            <outputDirectory>bin</outputDirectory>
 
-			<directory>${basedir}/vesta-server/target/</directory>
-			<includes>
-				<include>vesta-server-*-bin.tar.gz</include>
-			</includes>
-		</fileSet>
-		<fileSet>
-			<outputDirectory>bin</outputDirectory>
+            <directory>${basedir}/vesta-server/target/</directory>
+            <includes>
+                <include>vesta-server-*-bin.tar.gz</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>bin</outputDirectory>
 
-			<directory>${basedir}/vesta-rest-netty/target/</directory>
-			<includes>
-				<include>vesta-rest-netty-*-bin.tar.gz</include>
-			</includes>
-		</fileSet>
-		<fileSet>
-			<outputDirectory>bin</outputDirectory>
+            <directory>${basedir}/vesta-rest-netty/target/</directory>
+            <includes>
+                <include>vesta-rest-netty-*-bin.tar.gz</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <outputDirectory>bin</outputDirectory>
 
-			<directory>${basedir}/vesta-rest/target/</directory>
-			<includes>
-				<include>vesta-rest-*-bin.tar.gz</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-rest/target/</directory>
+            <includes>
+                <include>vesta-rest-*-bin.tar.gz</include>
+            </includes>
+        </fileSet>
 
-		<!-- src dir -->
+        <!-- src dir -->
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-service/target/</directory>
-			<includes>
-				<include>vesta-service-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-service/target/</directory>
+            <includes>
+                <include>vesta-service-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-server/target/</directory>
-			<includes>
-				<include>vesta-server-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-server/target/</directory>
+            <includes>
+                <include>vesta-server-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-rest-netty/target/</directory>
-			<includes>
-				<include>vesta-rest-netty-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-rest-netty/target/</directory>
+            <includes>
+                <include>vesta-rest-netty-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-rest/target/</directory>
-			<includes>
-				<include>vesta-rest-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-rest/target/</directory>
+            <includes>
+                <include>vesta-rest-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-intf/target/</directory>
-			<includes>
-				<include>vesta-intf-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-intf/target/</directory>
+            <includes>
+                <include>vesta-intf-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-client/target/</directory>
-			<includes>
-				<include>vesta-client-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-client/target/</directory>
+            <includes>
+                <include>vesta-client-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-sample/vesta-sample-client/target/</directory>
-			<includes>
-				<include>vesta-sample-client-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-sample/vesta-sample-client/target/</directory>
+            <includes>
+                <include>vesta-sample-client-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>src</outputDirectory>
+        <fileSet>
+            <outputDirectory>src</outputDirectory>
 
-			<directory>${basedir}/vesta-sample/vesta-sample-embed/target/</directory>
-			<includes>
-				<include>vesta-sample-embed-*-sources.jar</include>
-			</includes>
-		</fileSet>
+            <directory>${basedir}/vesta-sample/vesta-sample-embed/target/</directory>
+            <includes>
+                <include>vesta-sample-embed-*-sources.jar</include>
+            </includes>
+        </fileSet>
 
-		<!-- doc dir -->
-		<!-- 
-		<fileSet>
-			<outputDirectory>doc</outputDirectory>
+        <!-- doc dir -->
+        <!--
+        <fileSet>
+            <outputDirectory>doc</outputDirectory>
 
-			<directory>${basedir}/vesta-doc/</directory>
-			<includes>
-				<include>*Vesta*.html</include>
-			</includes>
-			
-		</fileSet>
- 		-->
- 		
-		<!-- index.html -->
-		<fileSet>
-			<outputDirectory></outputDirectory>
+            <directory>${basedir}/vesta-doc/</directory>
+            <includes>
+                <include>*Vesta*.html</include>
+            </includes>
 
-			<directory>${basedir}/vesta-doc/</directory>
-			<includes>
-				<include>index.html</include>
-			</includes>
-		</fileSet>
+        </fileSet>
+         -->
 
-	</fileSets>
+        <!-- index.html -->
+        <fileSet>
+            <outputDirectory></outputDirectory>
+
+            <directory>${basedir}/vesta-doc/</directory>
+            <includes>
+                <include>index.html</include>
+            </includes>
+        </fileSet>
+
+    </fileSets>
 </assembly>

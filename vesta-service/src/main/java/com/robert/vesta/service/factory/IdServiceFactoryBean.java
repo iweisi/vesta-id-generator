@@ -1,246 +1,247 @@
 package com.robert.vesta.service.factory;
 
-import java.beans.PropertyVetoException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.jdbc.core.JdbcTemplate;
-
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.robert.vesta.service.impl.IdServiceImpl;
 import com.robert.vesta.service.impl.provider.DbMachineIdProvider;
 import com.robert.vesta.service.impl.provider.IpConfigurableMachineIdProvider;
 import com.robert.vesta.service.impl.provider.PropertyMachineIdProvider;
 import com.robert.vesta.service.intf.IdService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.beans.PropertyVetoException;
 
 public class IdServiceFactoryBean implements FactoryBean<IdService> {
-	protected final Logger log = LoggerFactory
-			.getLogger(IdServiceFactoryBean.class);
+    protected final Logger log = LoggerFactory
+            .getLogger(IdServiceFactoryBean.class);
 
-	public enum Type {
-		PROPERTY, IP_CONFIGURABLE, DB
-	};
+    public enum Type {
+        PROPERTY, IP_CONFIGURABLE, DB
+    }
 
-	private Type providerType;
+    ;
 
-	private long machineId;
+    private Type providerType;
 
-	private String ips;
+    private long machineId;
 
-	private String dbUrl;
-	private String dbName;
-	private String dbUser;
-	private String dbPassword;
+    private String ips;
 
-	private long genMethod = -1;
-	private long type = -1;
-	private long version = -1;
+    private String dbUrl;
+    private String dbName;
+    private String dbUser;
+    private String dbPassword;
 
-	private IdService idService;
+    private long genMethod = -1;
+    private long type = -1;
+    private long version = -1;
 
-	public void init() {
-		if (providerType == null) {
-			log.error("The type of Id service is mandatory.");
-			throw new IllegalArgumentException(
-					"The type of Id service is mandatory.");
-		}
+    private IdService idService;
 
-		switch (providerType) {
-		case PROPERTY:
-			idService = constructPropertyIdService(machineId);
-			break;
-		case IP_CONFIGURABLE:
-			idService = constructIpConfigurableIdService(ips);
-			break;
-		case DB:
-			idService = constructDbIdService(dbUrl, dbName, dbUser, dbPassword);
-			break;
-		}
-	}
+    public void init() {
+        if (providerType == null) {
+            log.error("The type of Id service is mandatory.");
+            throw new IllegalArgumentException(
+                    "The type of Id service is mandatory.");
+        }
 
-	public IdService getObject() throws Exception {
-		return idService;
-	}
+        switch (providerType) {
+            case PROPERTY:
+                idService = constructPropertyIdService(machineId);
+                break;
+            case IP_CONFIGURABLE:
+                idService = constructIpConfigurableIdService(ips);
+                break;
+            case DB:
+                idService = constructDbIdService(dbUrl, dbName, dbUser, dbPassword);
+                break;
+        }
+    }
 
-	private IdService constructPropertyIdService(long machineId) {
-		log.info("Construct Property IdService machineId {}", machineId);
+    public IdService getObject() throws Exception {
+        return idService;
+    }
 
-		PropertyMachineIdProvider propertyMachineIdProvider = new PropertyMachineIdProvider();
-		propertyMachineIdProvider.setMachineId(machineId);
+    private IdService constructPropertyIdService(long machineId) {
+        log.info("Construct Property IdService machineId {}", machineId);
 
-		IdServiceImpl idServiceImpl = new IdServiceImpl();
-		idServiceImpl.setMachineIdProvider(propertyMachineIdProvider);
-		if (genMethod != -1)
-			idServiceImpl.setGenMethod(genMethod);
-		if (type != -1)
-			idServiceImpl.setType(type);
-		if (version != -1)
-			idServiceImpl.setVersion(version);
-		idServiceImpl.init();
+        PropertyMachineIdProvider propertyMachineIdProvider = new PropertyMachineIdProvider();
+        propertyMachineIdProvider.setMachineId(machineId);
 
-		return idServiceImpl;
-	}
+        IdServiceImpl idServiceImpl = new IdServiceImpl();
+        idServiceImpl.setMachineIdProvider(propertyMachineIdProvider);
+        if (genMethod != -1)
+            idServiceImpl.setGenMethod(genMethod);
+        if (type != -1)
+            idServiceImpl.setType(type);
+        if (version != -1)
+            idServiceImpl.setVersion(version);
+        idServiceImpl.init();
 
-	private IdService constructIpConfigurableIdService(String ips) {
-		log.info("Construct Ip Configurable IdService ips {}", ips);
+        return idServiceImpl;
+    }
 
-		IpConfigurableMachineIdProvider ipConfigurableMachineIdProvider = new IpConfigurableMachineIdProvider(
-				ips);
+    private IdService constructIpConfigurableIdService(String ips) {
+        log.info("Construct Ip Configurable IdService ips {}", ips);
 
-		IdServiceImpl idServiceImpl = new IdServiceImpl();
-		idServiceImpl.setMachineIdProvider(ipConfigurableMachineIdProvider);
-		if (genMethod != -1)
-			idServiceImpl.setGenMethod(genMethod);
-		if (type != -1)
-			idServiceImpl.setType(type);
-		if (version != -1)
-			idServiceImpl.setVersion(version);
-		idServiceImpl.init();
+        IpConfigurableMachineIdProvider ipConfigurableMachineIdProvider = new IpConfigurableMachineIdProvider(
+                ips);
 
-		return idServiceImpl;
-	}
+        IdServiceImpl idServiceImpl = new IdServiceImpl();
+        idServiceImpl.setMachineIdProvider(ipConfigurableMachineIdProvider);
+        if (genMethod != -1)
+            idServiceImpl.setGenMethod(genMethod);
+        if (type != -1)
+            idServiceImpl.setType(type);
+        if (version != -1)
+            idServiceImpl.setVersion(version);
+        idServiceImpl.init();
 
-	private IdService constructDbIdService(String dbUrl, String dbName,
-			String dbUser, String dbPassword) {
-		log.info(
-				"Construct Db IdService dbUrl {} dbName {} dbUser {} dbPassword {}",
-				dbUrl, dbName, dbUser, dbPassword);
+        return idServiceImpl;
+    }
 
-		ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
+    private IdService constructDbIdService(String dbUrl, String dbName,
+                                           String dbUser, String dbPassword) {
+        log.info(
+                "Construct Db IdService dbUrl {} dbName {} dbUser {} dbPassword {}",
+                dbUrl, dbName, dbUser, dbPassword);
 
-		String jdbcDriver = "com.mysql.jdbc.Driver";
-		try {
-			comboPooledDataSource.setDriverClass(jdbcDriver);
-		} catch (PropertyVetoException e) {
-			log.error("Wrong JDBC driver {}", jdbcDriver);
-			log.error("Wrong JDBC driver error: ", e);
-			throw new IllegalStateException("Wrong JDBC driver ", e);
-		}
+        ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
 
-		comboPooledDataSource.setMinPoolSize(5);
-		comboPooledDataSource.setMaxPoolSize(30);
-		comboPooledDataSource.setIdleConnectionTestPeriod(20);
-		comboPooledDataSource.setMaxIdleTime(25);
-		comboPooledDataSource.setBreakAfterAcquireFailure(false);
-		comboPooledDataSource.setCheckoutTimeout(3000);
-		comboPooledDataSource.setAcquireRetryAttempts(50);
-		comboPooledDataSource.setAcquireRetryDelay(1000);
+        String jdbcDriver = "com.mysql.jdbc.Driver";
+        try {
+            comboPooledDataSource.setDriverClass(jdbcDriver);
+        } catch (PropertyVetoException e) {
+            log.error("Wrong JDBC driver {}", jdbcDriver);
+            log.error("Wrong JDBC driver error: ", e);
+            throw new IllegalStateException("Wrong JDBC driver ", e);
+        }
 
-		String url = String
-				.format("jdbc:mysql://%s/%s?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true",
-						dbUrl, dbName);
+        comboPooledDataSource.setMinPoolSize(5);
+        comboPooledDataSource.setMaxPoolSize(30);
+        comboPooledDataSource.setIdleConnectionTestPeriod(20);
+        comboPooledDataSource.setMaxIdleTime(25);
+        comboPooledDataSource.setBreakAfterAcquireFailure(false);
+        comboPooledDataSource.setCheckoutTimeout(3000);
+        comboPooledDataSource.setAcquireRetryAttempts(50);
+        comboPooledDataSource.setAcquireRetryDelay(1000);
 
-		comboPooledDataSource.setJdbcUrl(url);
-		comboPooledDataSource.setUser(dbUser);
-		comboPooledDataSource.setPassword(dbPassword);
+        String url = String
+                .format("jdbc:mysql://%s/%s?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true",
+                        dbUrl, dbName);
 
-		JdbcTemplate jdbcTemplate = new JdbcTemplate();
-		jdbcTemplate.setLazyInit(false);
-		jdbcTemplate.setDataSource(comboPooledDataSource);
+        comboPooledDataSource.setJdbcUrl(url);
+        comboPooledDataSource.setUser(dbUser);
+        comboPooledDataSource.setPassword(dbPassword);
 
-		DbMachineIdProvider dbMachineIdProvider = new DbMachineIdProvider();
-		dbMachineIdProvider.setJdbcTemplate(jdbcTemplate);
-		dbMachineIdProvider.init();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setLazyInit(false);
+        jdbcTemplate.setDataSource(comboPooledDataSource);
 
-		IdServiceImpl idServiceImpl = new IdServiceImpl();
-		idServiceImpl.setMachineIdProvider(dbMachineIdProvider);
-		if (genMethod != -1)
-			idServiceImpl.setGenMethod(genMethod);
-		if (type != -1)
-			idServiceImpl.setType(type);
-		if (version != -1)
-			idServiceImpl.setVersion(version);
-		idServiceImpl.init();
+        DbMachineIdProvider dbMachineIdProvider = new DbMachineIdProvider();
+        dbMachineIdProvider.setJdbcTemplate(jdbcTemplate);
+        dbMachineIdProvider.init();
 
-		return idServiceImpl;
-	}
+        IdServiceImpl idServiceImpl = new IdServiceImpl();
+        idServiceImpl.setMachineIdProvider(dbMachineIdProvider);
+        if (genMethod != -1)
+            idServiceImpl.setGenMethod(genMethod);
+        if (type != -1)
+            idServiceImpl.setType(type);
+        if (version != -1)
+            idServiceImpl.setVersion(version);
+        idServiceImpl.init();
 
-	public Class<?> getObjectType() {
-		return IdService.class;
-	}
+        return idServiceImpl;
+    }
 
-	public boolean isSingleton() {
-		return true;
-	}
+    public Class<?> getObjectType() {
+        return IdService.class;
+    }
 
-	public Type getProviderType() {
-		return providerType;
-	}
+    public boolean isSingleton() {
+        return true;
+    }
 
-	public void setProviderType(Type providerType) {
-		this.providerType = providerType;
-	}
+    public Type getProviderType() {
+        return providerType;
+    }
 
-	public long getMachineId() {
-		return machineId;
-	}
+    public void setProviderType(Type providerType) {
+        this.providerType = providerType;
+    }
 
-	public void setMachineId(long machineId) {
-		this.machineId = machineId;
-	}
+    public long getMachineId() {
+        return machineId;
+    }
 
-	public String getIps() {
-		return ips;
-	}
+    public void setMachineId(long machineId) {
+        this.machineId = machineId;
+    }
 
-	public void setIps(String ips) {
-		this.ips = ips;
-	}
+    public String getIps() {
+        return ips;
+    }
 
-	public String getDbUrl() {
-		return dbUrl;
-	}
+    public void setIps(String ips) {
+        this.ips = ips;
+    }
 
-	public void setDbUrl(String dbUrl) {
-		this.dbUrl = dbUrl;
-	}
+    public String getDbUrl() {
+        return dbUrl;
+    }
 
-	public String getDbName() {
-		return dbName;
-	}
+    public void setDbUrl(String dbUrl) {
+        this.dbUrl = dbUrl;
+    }
 
-	public void setDbName(String dbName) {
-		this.dbName = dbName;
-	}
+    public String getDbName() {
+        return dbName;
+    }
 
-	public String getDbUser() {
-		return dbUser;
-	}
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
+    }
 
-	public void setDbUser(String dbUser) {
-		this.dbUser = dbUser;
-	}
+    public String getDbUser() {
+        return dbUser;
+    }
 
-	public String getDbPassword() {
-		return dbPassword;
-	}
+    public void setDbUser(String dbUser) {
+        this.dbUser = dbUser;
+    }
 
-	public void setDbPassword(String dbPassword) {
-		this.dbPassword = dbPassword;
-	}
+    public String getDbPassword() {
+        return dbPassword;
+    }
 
-	public long getGenMethod() {
-		return genMethod;
-	}
+    public void setDbPassword(String dbPassword) {
+        this.dbPassword = dbPassword;
+    }
 
-	public void setGenMethod(long genMethod) {
-		this.genMethod = genMethod;
-	}
+    public long getGenMethod() {
+        return genMethod;
+    }
 
-	public long getType() {
-		return type;
-	}
+    public void setGenMethod(long genMethod) {
+        this.genMethod = genMethod;
+    }
 
-	public void setType(long type) {
-		this.type = type;
-	}
+    public long getType() {
+        return type;
+    }
 
-	public long getVersion() {
-		return version;
-	}
+    public void setType(long type) {
+        this.type = type;
+    }
 
-	public void setVersion(long version) {
-		this.version = version;
-	}
+    public long getVersion() {
+        return version;
+    }
+
+    public void setVersion(long version) {
+        this.version = version;
+    }
 }

@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-        <parent>
-                <groupId>com.robert.vesta</groupId>
-                <artifactId>vesta-id-generator</artifactId>
-                <version>0.0.1</version>
-        </parent>
+    <parent>
+        <groupId>com.robert.vesta</groupId>
+        <artifactId>vesta-id-generator</artifactId>
+        <version>0.0.1</version>
+    </parent>
 
 
-  <groupId>com.robert.vesta</groupId>
-  <artifactId>vesta-sample</artifactId>
-  <version>0.0.1</version>
-  <packaging>pom</packaging>
+    <groupId>com.robert.vesta</groupId>
+    <artifactId>vesta-sample</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
 
-  <name>vesta-sample</name>
+    <name>vesta-sample</name>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <modules>
-    <module>vesta-sample-embed</module>
-    <module>vesta-sample-client</module>
-  </modules>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <modules>
+        <module>vesta-sample-embed</module>
+        <module>vesta-sample-client</module>
+    </modules>
 </project>

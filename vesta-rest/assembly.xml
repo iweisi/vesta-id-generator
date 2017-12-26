@@ -1,33 +1,33 @@
 <assembly>
-	<id>bin</id>
+    <id>bin</id>
 
-	<formats>
-		<format>tar.gz</format>
-	</formats>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
 
-	<includeBaseDirectory>true</includeBaseDirectory>
+    <includeBaseDirectory>true</includeBaseDirectory>
 
-	<fileSets>
-		<fileSet>
-			<outputDirectory>bin</outputDirectory>
-			<directory>${basedir}/src/main/scripts/</directory>
-			<fileMode>755</fileMode>
-		</fileSet>
+    <fileSets>
+        <fileSet>
+            <outputDirectory>bin</outputDirectory>
+            <directory>${basedir}/src/main/scripts/</directory>
+            <fileMode>755</fileMode>
+        </fileSet>
 
-		<fileSet>
-			<outputDirectory>lib</outputDirectory>
-			<directory>${basedir}/target</directory>
-			
-			<includes>
-				<include>*.jar</include>
-			</includes>
-		</fileSet>
+        <fileSet>
+            <outputDirectory>lib</outputDirectory>
+            <directory>${basedir}/target</directory>
 
-		<fileSet>
-			<outputDirectory>/</outputDirectory>
-			<includes>
-				<include>${basedir}/README.MD</include>
-			</includes>
-		</fileSet>
-	</fileSets>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>${basedir}/README.MD</include>
+            </includes>
+        </fileSet>
+    </fileSets>
 </assembly>

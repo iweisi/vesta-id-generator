@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<dubbo:application name="vesta-service" />
+    <dubbo:application name="vesta-service"/>
 
-	<dubbo:registry address="${vesta.service.register.center}" />
+    <dubbo:registry address="${vesta.service.register.center}"/>
 
-	<dubbo:protocol name="dubbo" port="${vesta.service.port}" />
+    <dubbo:protocol name="dubbo" port="${vesta.service.port}"/>
 
-	<bean id="idService" class="com.robert.vesta.service.factory.IdServiceFactoryBean"
-		init-method="init">
-		<property name="providerType" value="PROPERTY" />
+    <bean id="idService" class="com.robert.vesta.service.factory.IdServiceFactoryBean"
+          init-method="init">
+        <property name="providerType" value="PROPERTY"/>
 
-		<property name="genMethod" value="${vesta.genMethod}" />
-		<property name="machineId" value="${vesta.machine}" />
-	</bean>
+        <property name="genMethod" value="${vesta.genMethod}"/>
+        <property name="machineId" value="${vesta.machine}"/>
+    </bean>
 
-	<dubbo:service interface="com.robert.vesta.service.intf.IdService"
-		ref="idService" />
+    <dubbo:service interface="com.robert.vesta.service.intf.IdService"
+                   ref="idService"/>
 
 </beans>

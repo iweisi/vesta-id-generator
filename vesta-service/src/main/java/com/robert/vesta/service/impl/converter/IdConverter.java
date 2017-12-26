@@ -4,8 +4,8 @@ import com.robert.vesta.service.bean.Id;
 
 public interface IdConverter {
 
-	public long convert(Id id);
+    public long convert(Id id);
 
-	public Id convert(long id);
+    public Id convert(long id);
 
 }
