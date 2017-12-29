@@ -7,3 +7,4 @@
 7. 为了满足团购码的生成，我们需要让其随机，而不是连续的，那么，需要对生成的数据进行bit_shuffle, 参考：http://cloudate.net/?p=1732
 8. 好朋友张宁同学提醒，VestaServer在线上cpu占用高，等待设计问题，需要使用sleep或者join或者wait来实现
 9. 可以注册到Spring Cloud的Eruka上的功能
+10. source code copy and use version简化版本
