@@ -4,8 +4,6 @@ import com.robert.vesta.service.impl.bean.IdType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Date;
-
 public class TimeUtils {
     protected static final Logger log = LoggerFactory.getLogger(TimeUtils.class);
 

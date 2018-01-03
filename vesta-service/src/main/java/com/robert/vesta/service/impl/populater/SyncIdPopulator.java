@@ -5,9 +5,6 @@ import com.robert.vesta.service.impl.bean.IdMeta;
 import com.robert.vesta.service.impl.bean.IdType;
 import com.robert.vesta.util.TimeUtils;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class SyncIdPopulator implements IdPopulator {
 
     private long sequence = 0;
