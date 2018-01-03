@@ -8,13 +8,13 @@ import com.robert.vesta.service.impl.converter.IdConverter;
 import com.robert.vesta.service.impl.converter.IdConverterImpl;
 import com.robert.vesta.service.impl.provider.MachineIdProvider;
 import com.robert.vesta.service.intf.IdService;
+import com.robert.vesta.util.TimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
 public abstract class AbstractIdServiceImpl implements IdService {
-    public static final long EPOCH = 1420041600000L;
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -61,12 +61,12 @@ public abstract class AbstractIdServiceImpl implements IdService {
     public long genId() {
         Id id = new Id();
 
-        populateId(id);
-
         id.setMachine(machineId);
         id.setGenMethod(genMethod);
         id.setType(type);
         id.setVersion(version);
+
+        populateId(id);
 
         long ret = idConverter.convert(id);
 
@@ -79,14 +79,16 @@ public abstract class AbstractIdServiceImpl implements IdService {
 
     protected abstract void populateId(Id id);
 
-    protected long genTime() {
-        if (idType == IdType.MAX_PEAK)
-            return (System.currentTimeMillis() - EPOCH) / 1000;
-        else if (idType == IdType.MIN_GRANULARITY)
-            return (System.currentTimeMillis() - EPOCH);
+    public Date transTime(final long time) {
+        if (idType == IdType.MAX_PEAK) {
+            return new Date(time * 1000 + TimeUtils.EPOCH);
+        } else if (idType == IdType.MIN_GRANULARITY) {
+            return new Date(time + TimeUtils.EPOCH);
+        }
 
-        return (System.currentTimeMillis() - EPOCH) / 1000;
+        return null;
     }
+
 
     public Id expId(long id) {
         return idConverter.convert(id);
@@ -119,15 +121,6 @@ public abstract class AbstractIdServiceImpl implements IdService {
         return idConverter.convert(id);
     }
 
-    public Date transTime(long time) {
-        if (idType == IdType.MAX_PEAK) {
-            return new Date(time * 1000 + EPOCH);
-        } else if (idType == IdType.MIN_GRANULARITY) {
-            return new Date(time + EPOCH);
-        }
-
-        return null;
-    }
 
     public void setMachineId(long machineId) {
         this.machineId = machineId;
