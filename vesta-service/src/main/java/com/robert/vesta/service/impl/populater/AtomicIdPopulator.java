@@ -10,27 +10,10 @@ import java.util.concurrent.atomic.AtomicReference;
 public class AtomicIdPopulator implements IdPopulator {
 
     class Variant {
-        private long sequence = 0;
 
+        private long sequence = 0;
         private long lastTimestamp = -1;
 
-        @Override
-        public boolean equals(Object obj) {
-
-            if (obj == null)
-                return false;
-
-            Variant it = null;
-
-            if (obj instanceof Variant) {
-                it = (Variant) obj;
-            }
-
-            if (it.sequence != this.sequence || it.lastTimestamp != this.lastTimestamp)
-                return false;
-
-            return true;
-        }
     }
 
     private AtomicReference<Variant> variant = new AtomicReference<Variant>(new Variant());
@@ -40,18 +23,19 @@ public class AtomicIdPopulator implements IdPopulator {
     }
 
     public void populateId(Id id, IdMeta idMeta) {
-        while (true) {
-            // Save the old variant
-            Variant varOld = new Variant();
-            varOld.sequence = variant.get().sequence;
-            varOld.lastTimestamp = variant.get().lastTimestamp;
+        Variant varOld, varNew;
+        long timestamp, sequence;
 
+        while (true) {
+
+            // Save the old variant
+            varOld = variant.get();
 
             // populate the current variant
-            long timestamp = TimeUtils.genTime(IdType.parse(id.getType()));
+            timestamp = TimeUtils.genTime(IdType.parse(id.getType()));
             TimeUtils.validateTimestamp(varOld.lastTimestamp, timestamp);
 
-            long sequence = variant.get().sequence;
+            sequence = varOld.sequence;
 
             if (timestamp == varOld.lastTimestamp) {
                 sequence++;
@@ -64,15 +48,17 @@ public class AtomicIdPopulator implements IdPopulator {
             }
 
             // Assign the current variant by the atomic tools
-            Variant varNew = new Variant();
+            varNew = new Variant();
             varNew.sequence = sequence;
             varNew.lastTimestamp = timestamp;
 
             if (variant.compareAndSet(varOld, varNew)) {
                 id.setSeq(sequence);
                 id.setTime(timestamp);
+
                 break;
             }
+            
         }
     }
 }

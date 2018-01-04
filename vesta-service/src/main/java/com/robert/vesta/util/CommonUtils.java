@@ -12,10 +12,8 @@ public class CommonUtils {
 
         if (Arrays.asList(SWITCH_ON_EXP).contains(swtch)) {
             return true;
-        } else {
-            return false;
         }
-
+            return false;
     }
 
     public static boolean isPropKeyOn(String key) {
@@ -25,6 +23,7 @@ public class CommonUtils {
         if (Arrays.asList(SWITCH_ON_EXP).contains(prop)) {
             return true;
         }
+
         return false;
     }
 }
