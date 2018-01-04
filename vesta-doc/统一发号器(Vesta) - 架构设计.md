@@ -148,7 +148,11 @@ ID类型在配置时指定，需要重启服务才能互相切换。
 
 对于中心服务器和REST发布方式，ID生成的过程涉及到网络IO和CPU操作，ID的生成基本都是内存到高速缓存的操作，没有IO操作，网络IO是系统的瓶颈。
 
-相对于CPU计算速度来说网络IO是瓶颈，因此，ID产生的服务使用多线程的方式，对于ID生成过程中的竞争点time和sequence，我们使用concurrent包的ReentrantLock进行互斥。
+相对于CPU计算速度来说网络IO是瓶颈，因此，ID产生的服务使用多线程的方式，对于ID生成过程中的竞争点time和sequence，这里使用了多种实现方式
+
+> 1. 使用concurrent包的ReentrantLock进行互斥，这是缺省的实现方式，也是追求性能和稳定两个目标的妥协方案。
+> 1. 使用传统的synchronized进行互斥，这种方式的性能稍微逊色一些，通过传入JVM参数-Dvesta.sync.lock.impl.key=true来开启。
+> 1. 使用concurrent包的ReentrantLock进行互斥，这种实现方式的性能非常高，但是在高并发环境下CPU负载会很高，通过传入JVM参数-Dvesta.atomic.impl.key=true来开启。
 
 ###机器ID的分配
 
