@@ -32,7 +32,6 @@ public class SyncIdPopulator implements IdPopulator {
 
         id.setSeq(sequence);
         id.setTime(timestamp);
-
     }
 
 }

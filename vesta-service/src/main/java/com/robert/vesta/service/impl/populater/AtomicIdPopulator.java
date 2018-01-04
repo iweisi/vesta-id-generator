@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class AtomicIdPopulator implements IdPopulator {
 
-    static class Variant {
+    class Variant {
         private long sequence = 0;
 
         private long lastTimestamp = -1;
@@ -41,11 +41,13 @@ public class AtomicIdPopulator implements IdPopulator {
 
     public void populateId(Id id, IdMeta idMeta) {
         while (true) {
+            // Save the old variant
             Variant varOld = new Variant();
             varOld.sequence = variant.get().sequence;
             varOld.lastTimestamp = variant.get().lastTimestamp;
 
 
+            // populate the current variant
             long timestamp = TimeUtils.genTime(IdType.parse(id.getType()));
             TimeUtils.validateTimestamp(varOld.lastTimestamp, timestamp);
 
@@ -61,6 +63,7 @@ public class AtomicIdPopulator implements IdPopulator {
                 sequence = 0;
             }
 
+            // Assign the current variant by the atomic tools
             Variant varNew = new Variant();
             varNew.sequence = sequence;
             varNew.lastTimestamp = timestamp;

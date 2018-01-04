@@ -35,12 +35,18 @@ public class IdServiceImpl extends AbstractIdServiceImpl {
     }
 
     public void initPopulator() {
-        if (CommonUtils.isPropKeyOn(SYNC_LOCK_IMPL_KEY))
+
+        if (CommonUtils.isPropKeyOn(SYNC_LOCK_IMPL_KEY)) {
+            log.info("The SyncIdPopulator is used.");
             idPopulator = new SyncIdPopulator();
-        else if (CommonUtils.isPropKeyOn(ATOMIC_IMPL_KEY))
+        } else if (CommonUtils.isPropKeyOn(ATOMIC_IMPL_KEY)) {
+            log.info("The AtomicIdPopulator is used.");
             idPopulator = new AtomicIdPopulator();
-        else
+        } else {
+            log.info("The default LockIdPopulator is used.");
             idPopulator = new LockIdPopulator();
+        }
+
     }
 
     protected void populateId(Id id) {
