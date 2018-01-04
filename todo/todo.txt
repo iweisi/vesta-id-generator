@@ -8,3 +8,4 @@
 8. 好朋友张宁同学提醒，VestaServer在线上cpu占用高，等待设计问题，需要使用sleep或者join或者wait来实现
 9. 可以注册到Spring Cloud的Eruka上的功能
 10. source code copy and use version简化版本
+11. 参考发号器的并发实现：http://blog.csdn.net/lianhuazy167/article/details/66967665，
