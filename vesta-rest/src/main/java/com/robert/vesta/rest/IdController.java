@@ -65,8 +65,8 @@ public class IdController {
                 madeId = idService.makeId(type, genMethod, machine, time, seq);
             }
         } else {
-            madeId = idService.makeId(version, type, genMethod, machine, time,
-                    seq);
+            madeId = idService.makeId(version, type, genMethod, time,
+                    seq, machine);
         }
 
         return madeId;

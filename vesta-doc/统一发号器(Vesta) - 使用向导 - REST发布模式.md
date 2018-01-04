@@ -115,11 +115,11 @@ JSON字符串显示的是反解的ID的各个组成部分的数值。
 
 - 命令：
 
->curl http://localhost:10010/transtime?time=12235264
+>http://localhost:8080/makeid?machine=1021&seq=0&time=94990103&genMethod=2&type=0&version=0
 
 - 结果：
 
->**1138729511026688**
+>**2305844108284681216**
 
 ## FAQ
 
