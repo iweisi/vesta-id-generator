@@ -8,4 +8,5 @@
 8. 好朋友张宁同学提醒，VestaServer在线上cpu占用高，等待设计问题，需要使用sleep或者join或者wait来实现
 9. 可以注册到Spring Cloud的Eruka上的功能
 10. source code copy and use version简化版本
-11. 参考发号器的并发实现：http://blog.csdn.net/lianhuazy167/article/details/66967665，
+11. 参考发号器的并发实现：http://blog.csdn.net/lianhuazy167/article/details/66967665
+12. 当前实现在当前的时间单位内，ID用完后，就会等待，考虑当前时间单位的ID用完后，是否可以提前使用后续事件的ID，等请求量下去了，生成的ID又回到了当前时间
