@@ -7,17 +7,21 @@ import com.robert.vesta.service.impl.bean.IdType;
 
 public class IdConverterImpl implements IdConverter {
 
-    private IdType idType;
+    private IdMeta idMeta;
 
     public IdConverterImpl() {
     }
 
     public IdConverterImpl(IdType idType) {
-        this.idType = idType;
+        this(IdMetaFactory.getIdMeta(idType));
+    }
+
+    public IdConverterImpl(IdMeta idMeta) {
+        this.idMeta = idMeta;
     }
 
     public long convert(Id id) {
-        return doConvert(id, IdMetaFactory.getIdMeta(idType));
+        return doConvert(id, idMeta);
     }
 
     protected long doConvert(Id id, IdMeta idMeta) {
@@ -39,7 +43,7 @@ public class IdConverterImpl implements IdConverter {
     }
 
     public Id convert(long id) {
-        return doConvert(id, IdMetaFactory.getIdMeta(idType));
+        return doConvert(id, idMeta);
     }
 
     protected Id doConvert(long id, IdMeta idMeta) {
@@ -60,11 +64,11 @@ public class IdConverterImpl implements IdConverter {
         return ret;
     }
 
-    public IdType getIdType() {
-        return idType;
+    public IdMeta getIdMeta() {
+        return idMeta;
     }
 
-    public void setIdType(IdType idType) {
-        this.idType = idType;
+    public void setIdMeta(IdMeta idMeta) {
+        this.idMeta = idMeta;
     }
 }

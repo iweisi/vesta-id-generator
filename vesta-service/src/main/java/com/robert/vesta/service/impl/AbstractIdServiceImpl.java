@@ -52,10 +52,19 @@ public abstract class AbstractIdServiceImpl implements IdService {
                     "The machine ID is not configured properly so that Vesta Service refuses to start.");
 
         }
-
-        setIdMeta(IdMetaFactory.getIdMeta(idType));
-        setType(idType.value());
-        setIdConverter(new IdConverterImpl(idType));
+        if(this.idMeta == null){
+            setIdMeta(IdMetaFactory.getIdMeta(idType));
+            setType(idType.value());
+        } else {
+            if(this.idMeta.getTimeBits() == 30){
+                setType(0);
+            } else if(this.idMeta.getTimeBits() == 40){
+                setType(1);
+            } else {
+                throw new RuntimeException("Init Error. The time bits in IdMeta should be set to 30 or 40!");
+            }
+        }
+        setIdConverter(new IdConverterImpl(this.idMeta));
     }
 
     public long genId() {

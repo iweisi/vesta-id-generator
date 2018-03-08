@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="idService" class="com.robert.vesta.service.impl.IdServiceImpl"
+          init-method="init">
+        <property name="machineIdProvider" ref="propertyMachineIdProvider"/>
+        <property name="idMeta" ref="idMeta"/>
+    </bean>
+
+    <bean id="idMeta" class="com.robert.vesta.service.impl.bean.IdMeta">
+        <constructor-arg value="16"/>
+        <constructor-arg value="14"/>
+        <constructor-arg value="30"/>
+        <constructor-arg value="2"/>
+        <constructor-arg value="1"/>
+        <constructor-arg value="1"/>
+    </bean>
+
+    <bean id="propertyMachineIdProvider" class="com.robert.vesta.service.impl.provider.PropertyMachineIdProvider">
+        <property name="machineId" value="65535"/>
+    </bean>
+
+</beans>
