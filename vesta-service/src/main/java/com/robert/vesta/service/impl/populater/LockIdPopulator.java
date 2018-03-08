@@ -8,7 +8,7 @@ import com.robert.vesta.util.TimeUtils;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LockIdPopulator implements IdPopulator {
+public class LockIdPopulator implements IdPopulator, ResetPopulator {
 
     private long sequence = 0;
 
@@ -43,5 +43,10 @@ public class LockIdPopulator implements IdPopulator {
         } finally {
             lock.unlock();
         }
+    }
+
+    public void reset() {
+        this.sequence = 0;
+        this.lastTimestamp = -1;
     }
 }
