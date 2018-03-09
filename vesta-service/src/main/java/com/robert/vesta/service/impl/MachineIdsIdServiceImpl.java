@@ -20,7 +20,7 @@ public class MachineIdsIdServiceImpl extends IdServiceImpl {
 
     protected Map<Long, Long> machineIdMap = new ConcurrentHashMap<Long, Long>();
     public static final String STORE_FILE_NAME = "machineIdInfo.store";
-    private String storeFileName;
+    private String storeFilePath;
 
     private File storeFile;
 
@@ -85,11 +85,12 @@ public class MachineIdsIdServiceImpl extends IdServiceImpl {
     }
 
     protected void initStoreFile() {
-        if (storeFileName == null || storeFileName.length() == 0) {
-            storeFileName = STORE_FILE_NAME;
+        if (storeFilePath == null || storeFilePath.length() == 0) {
+            storeFilePath = System.getProperty("user.dir") + File.separator + STORE_FILE_NAME;
         }
         try {
-            storeFile = new File(Thread.currentThread().getContextClassLoader().getResource("").toURI().resolve(storeFileName));
+            log.info("machineId info store in <[" + storeFilePath + "]>");
+            storeFile = new File(storeFilePath);
             if (storeFile.exists()) {
                 BufferedReader reader = new BufferedReader(new FileReader(storeFile));
                 String line = reader.readLine();
@@ -104,7 +105,6 @@ public class MachineIdsIdServiceImpl extends IdServiceImpl {
                 }
                 reader.close();
             }
-        } catch (URISyntaxException e) {
         } catch (FileNotFoundException e) {
         } catch (IOException e) {
         }
@@ -152,7 +152,7 @@ public class MachineIdsIdServiceImpl extends IdServiceImpl {
         }
     }
 
-    public void setStoreFileName(String storeFileName) {
-        this.storeFileName = storeFileName;
+    public void setStoreFilePath(String storeFilePath) {
+        this.storeFilePath = storeFilePath;
     }
 }
