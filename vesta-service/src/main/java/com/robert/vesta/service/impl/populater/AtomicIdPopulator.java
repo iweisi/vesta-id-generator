@@ -7,7 +7,7 @@ import com.robert.vesta.util.TimeUtils;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-public class AtomicIdPopulator implements IdPopulator {
+public class AtomicIdPopulator implements IdPopulator, ResetPopulator {
 
     class Variant {
 
@@ -58,7 +58,12 @@ public class AtomicIdPopulator implements IdPopulator {
 
                 break;
             }
-            
+
         }
     }
+
+    public void reset() {
+        variant = new AtomicReference<Variant>(new Variant());
+    }
+
 }
