@@ -18,8 +18,8 @@ public class IdServiceTest extends AbstractTestNGSpringContextTests {
         long id = idService.genId();
         Id ido = idService.expId(id);
         long id1 = idService.makeId(ido.getVersion(), ido.getType(),
-                ido.getGenMethod(), ido.getMachine(), ido.getTime(),
-                ido.getSeq());
+                ido.getGenMethod(), ido.getTime(), ido.getSeq(),
+                ido.getMachine());
 
         System.err.println(id + ":" + ido);
 
@@ -34,8 +34,8 @@ public class IdServiceTest extends AbstractTestNGSpringContextTests {
         long id = idService.genId();
         Id ido = idService.expId(id);
         long id1 = idService.makeId(ido.getVersion(), ido.getType(),
-                ido.getGenMethod(), ido.getMachine(), ido.getTime(),
-                ido.getSeq());
+                ido.getGenMethod(), ido.getTime(), ido.getSeq(),
+                ido.getMachine());
 
         System.err.println(id + ":" + ido);
 
@@ -50,8 +50,8 @@ public class IdServiceTest extends AbstractTestNGSpringContextTests {
         long id = idService.genId();
         Id ido = idService.expId(id);
         long id1 = idService.makeId(ido.getVersion(), ido.getType(),
-                ido.getGenMethod(), ido.getMachine(), ido.getTime(),
-                ido.getSeq());
+                ido.getGenMethod(), ido.getTime(), ido.getSeq(),
+                ido.getMachine());
 
         System.err.println(id + ":" + ido);
 
