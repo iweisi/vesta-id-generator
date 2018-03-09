@@ -14,7 +14,7 @@ public class MachineIdsIdServiceTest extends AbstractTestNGSpringContextTests {
     public void testSimple() {
         IdService idService = (IdService) applicationContext
                 .getBean("idService");
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             long id = idService.genId();
             Id ido = idService.expId(id);
             long id1 = idService.makeId(ido.getVersion(), ido.getType(),
